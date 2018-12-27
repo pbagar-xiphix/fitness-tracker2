@@ -1,0 +1,40 @@
+{
+  "generator-jhipster": {
+    "applicationType": "monolith",
+    "gitCompany": "",
+    "baseName": "FitnessTracker2",
+    "packageName": "com.pluralsight",
+    "packageFolder": "com/pluralsight",
+    "serverPort": 8080,
+    "serviceDiscoveryType": false,
+    "authenticationType": "session",
+    "uaaBaseName": "../uaa",
+    "cacheProvider": "ehcache",
+    "enableHibernateCache": true,
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "h2Disk",
+    "prodDatabaseType": "mysql",
+    "searchEngine": false,
+    "enableSwaggerCodegen": false,
+    "messageBroker": false,
+    "buildTool": "maven",
+    "useSass": false,
+    "clientPackageManager": "npm",
+    "testFrameworks": [],
+    "enableTranslation": true,
+    "nativeLanguage": "en",
+    "languages": [
+      "es",
+      "en"
+    ],
+    "clientFramework": "angularX",
+    "jhiPrefix": "jhi",
+    "jhipsterVersion": "5.7.2",
+    "rememberMeKey": "356c422081364b5668a29d6d75a35ba25afe329d2ac9acc4526eaaf7dda40f81bb0d620ce8a5465c1935038c6350ae945619",
+    "otherModules": []
+  },
+  "git-provider": "GitHub",
+  "git-company": "pbagar-xiphix",
+  "repository-name": "fitness-tracker2"
+}
