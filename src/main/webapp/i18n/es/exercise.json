@@ -1,0 +1,22 @@
+{
+    "fitnessTracker2App": {
+        "exercise": {
+            "home": {
+                "title": "Exercises",
+                "createLabel": "Crear nuevo Exercise",
+                "createOrEditLabel": "Crear o editar Exercise"
+            },
+            "created": "Un nuevo Exercise ha sido creado con el identificador {{ param }}",
+            "updated": "Un Exercise ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Exercise ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Exercise {{ id }}?"
+            },
+            "detail": {
+                "title": "Exercise"
+            },
+            "minutes": "Minutes",
+            "activity": "Activity"
+        }
+    }
+}
