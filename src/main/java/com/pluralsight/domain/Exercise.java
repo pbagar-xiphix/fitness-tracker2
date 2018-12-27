@@ -1,6 +1,6 @@
 package com.pluralsight.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -8,8 +8,6 @@ import javax.persistence.*;
 import javax.validation.constraints.*;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 import java.util.Objects;
 
 /**
@@ -31,9 +29,10 @@ public class Exercise implements Serializable {
     @Column(name = "minutes")
     private Integer minutes;
 
-    @OneToMany(mappedBy = "exercise")
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private Set<Activity> activities = new HashSet<>();
+    @ManyToOne
+    @JsonIgnoreProperties("exercises")
+    private Activity activity;
+
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -56,29 +55,17 @@ public class Exercise implements Serializable {
         this.minutes = minutes;
     }
 
-    public Set<Activity> getActivities() {
-        return activities;
+    public Activity getActivity() {
+        return activity;
     }
 
-    public Exercise activities(Set<Activity> activities) {
-        this.activities = activities;
+    public Exercise activity(Activity activity) {
+        this.activity = activity;
         return this;
     }
 
-    public Exercise addActivity(Activity activity) {
-        this.activities.add(activity);
-        activity.setExercise(this);
-        return this;
-    }
-
-    public Exercise removeActivity(Activity activity) {
-        this.activities.remove(activity);
-        activity.setExercise(null);
-        return this;
-    }
-
-    public void setActivities(Set<Activity> activities) {
-        this.activities = activities;
+    public void setActivity(Activity activity) {
+        this.activity = activity;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

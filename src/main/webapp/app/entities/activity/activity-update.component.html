@@ -15,13 +15,6 @@
                         [(ngModel)]="activity.desc" />
                 </div>
 
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="fitnessTracker2App.activity.exercise" for="field_exercise">Exercise</label>
-                    <select class="form-control" id="field_exercise" name="exercise" [(ngModel)]="activity.exerciseId" >
-                        <option [ngValue]="null"></option>
-                        <option [ngValue]="exerciseOption.id" *ngFor="let exerciseOption of exercises; trackBy: trackExerciseById">{{exerciseOption.id}}</option>
-                    </select>
-                </div>
             </div>
             <div>
                 <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">

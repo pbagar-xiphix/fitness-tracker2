@@ -2,9 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { JhiAlertService } from 'ng-jhipster';
 
 import { IExercise } from 'app/shared/model/exercise.model';
 import { ExerciseService } from './exercise.service';
+import { IActivity } from 'app/shared/model/activity.model';
+import { ActivityService } from 'app/entities/activity';
 
 @Component({
     selector: 'jhi-exercise-update',
@@ -14,13 +17,26 @@ export class ExerciseUpdateComponent implements OnInit {
     exercise: IExercise;
     isSaving: boolean;
 
-    constructor(protected exerciseService: ExerciseService, protected activatedRoute: ActivatedRoute) {}
+    activities: IActivity[];
+
+    constructor(
+        protected jhiAlertService: JhiAlertService,
+        protected exerciseService: ExerciseService,
+        protected activityService: ActivityService,
+        protected activatedRoute: ActivatedRoute
+    ) {}
 
     ngOnInit() {
         this.isSaving = false;
         this.activatedRoute.data.subscribe(({ exercise }) => {
             this.exercise = exercise;
         });
+        this.activityService.query().subscribe(
+            (res: HttpResponse<IActivity[]>) => {
+                this.activities = res.body;
+            },
+            (res: HttpErrorResponse) => this.onError(res.message)
+        );
     }
 
     previousState() {
@@ -47,5 +63,13 @@ export class ExerciseUpdateComponent implements OnInit {
 
     protected onSaveError() {
         this.isSaving = false;
+    }
+
+    protected onError(errorMessage: string) {
+        this.jhiAlertService.error(errorMessage, null, null);
+    }
+
+    trackActivityById(index: number, item: IActivity) {
+        return item.id;
     }
 }

@@ -16,6 +16,7 @@
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="reset.bind(this)">
             <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="minutes"><span jhiTranslate="fitnessTracker2App.exercise.minutes">Minutes</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="activityId"><span jhiTranslate="fitnessTracker2App.exercise.activity">Activity</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th></th>
             </tr>
             </thead>
@@ -23,6 +24,11 @@
             <tr *ngFor="let exercise of exercises ;trackBy: trackId">
                 <td><a [routerLink]="['/exercise', exercise.id, 'view' ]">{{exercise.id}}</a></td>
                 <td>{{exercise.minutes}}</td>
+                <td>
+                    <div *ngIf="exercise.activityId">
+                        <a [routerLink]="['../activity', exercise.activityId , 'view' ]" >{{exercise.activityId}}</a>
+                    </div>
+                </td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"

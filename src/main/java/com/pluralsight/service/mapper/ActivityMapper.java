@@ -8,13 +8,11 @@ import org.mapstruct.*;
 /**
  * Mapper for the entity Activity and its DTO ActivityDTO.
  */
-@Mapper(componentModel = "spring", uses = {ExerciseMapper.class})
+@Mapper(componentModel = "spring", uses = {})
 public interface ActivityMapper extends EntityMapper<ActivityDTO, Activity> {
 
-    @Mapping(source = "exercise.id", target = "exerciseId")
-    ActivityDTO toDto(Activity activity);
 
-    @Mapping(source = "exerciseId", target = "exercise")
+    @Mapping(target = "exercises", ignore = true)
     Activity toEntity(ActivityDTO activityDTO);
 
     default Activity fromId(Long id) {

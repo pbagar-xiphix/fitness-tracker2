@@ -1,12 +1,14 @@
 package com.pluralsight.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Objects;
 
 /**
@@ -26,10 +28,9 @@ public class Activity implements Serializable {
     @Column(name = "jhi_desc")
     private String desc;
 
-    @ManyToOne
-    @JsonIgnoreProperties("activities")
-    private Exercise exercise;
-
+    @OneToMany(mappedBy = "activity")
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<Exercise> exercises = new HashSet<>();
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -52,17 +53,29 @@ public class Activity implements Serializable {
         this.desc = desc;
     }
 
-    public Exercise getExercise() {
-        return exercise;
+    public Set<Exercise> getExercises() {
+        return exercises;
     }
 
-    public Activity exercise(Exercise exercise) {
-        this.exercise = exercise;
+    public Activity exercises(Set<Exercise> exercises) {
+        this.exercises = exercises;
         return this;
     }
 
-    public void setExercise(Exercise exercise) {
-        this.exercise = exercise;
+    public Activity addExercise(Exercise exercise) {
+        this.exercises.add(exercise);
+        exercise.setActivity(this);
+        return this;
+    }
+
+    public Activity removeExercise(Exercise exercise) {
+        this.exercises.remove(exercise);
+        exercise.setActivity(null);
+        return this;
+    }
+
+    public void setExercises(Set<Exercise> exercises) {
+        this.exercises = exercises;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

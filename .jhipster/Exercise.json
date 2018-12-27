@@ -14,10 +14,10 @@
     ],
     "relationships": [
         {
-            "relationshipType": "one-to-many",
+            "relationshipType": "many-to-one",
             "relationshipName": "activity",
             "otherEntityName": "activity",
-            "otherEntityRelationshipName": "exercise"
+            "otherEntityField": "id"
         }
     ],
     "changelogDate": "20181227180253",
