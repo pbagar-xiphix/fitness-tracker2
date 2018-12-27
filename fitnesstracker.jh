@@ -1,0 +1,24 @@
+entity Activity {
+	desc String
+}
+
+entity Exercise {
+	minutes Integer min(1) max(120)
+}
+
+entity Goal {
+	minutes Integer min(1) max(120)
+}
+
+relationship OneToMany {
+	Exercise{activity} to Activity{exercise}
+}
+
+// Set pagination options
+paginate * with infinite-scroll
+
+dto * with mapstruct
+
+// Set service options to all except few
+service all
+
