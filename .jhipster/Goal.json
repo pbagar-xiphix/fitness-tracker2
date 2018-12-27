@@ -1,0 +1,25 @@
+{
+    "name": "Goal",
+    "fields": [
+        {
+            "fieldName": "minutes",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "min",
+                "max"
+            ],
+            "fieldValidateRulesMin": 1,
+            "fieldValidateRulesMax": 120
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20181227180254",
+    "entityTableName": "goal",
+    "dto": "mapstruct",
+    "pagination": "infinite-scroll",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}
