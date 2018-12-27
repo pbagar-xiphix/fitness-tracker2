@@ -15,6 +15,8 @@ public class ExerciseDTO implements Serializable {
     @Max(value = 120)
     private Integer minutes;
 
+    private Long activityId;
+
     public Long getId() {
         return id;
     }
@@ -29,6 +31,14 @@ public class ExerciseDTO implements Serializable {
 
     public void setMinutes(Integer minutes) {
         this.minutes = minutes;
+    }
+
+    public Long getActivityId() {
+        return activityId;
+    }
+
+    public void setActivityId(Long activityId) {
+        this.activityId = activityId;
     }
 
     @Override
@@ -57,6 +67,7 @@ public class ExerciseDTO implements Serializable {
         return "ExerciseDTO{" +
             "id=" + getId() +
             ", minutes=" + getMinutes() +
+            ", activity=" + getActivityId() +
             "}";
     }
 }

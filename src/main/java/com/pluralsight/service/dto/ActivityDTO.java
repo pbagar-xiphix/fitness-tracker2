@@ -12,8 +12,6 @@ public class ActivityDTO implements Serializable {
 
     private String desc;
 
-    private Long exerciseId;
-
     public Long getId() {
         return id;
     }
@@ -28,14 +26,6 @@ public class ActivityDTO implements Serializable {
 
     public void setDesc(String desc) {
         this.desc = desc;
-    }
-
-    public Long getExerciseId() {
-        return exerciseId;
-    }
-
-    public void setExerciseId(Long exerciseId) {
-        this.exerciseId = exerciseId;
     }
 
     @Override
@@ -64,7 +54,6 @@ public class ActivityDTO implements Serializable {
         return "ActivityDTO{" +
             "id=" + getId() +
             ", desc='" + getDesc() + "'" +
-            ", exercise=" + getExerciseId() +
             "}";
     }
 }

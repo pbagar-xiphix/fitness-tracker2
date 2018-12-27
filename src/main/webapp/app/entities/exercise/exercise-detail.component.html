@@ -9,6 +9,12 @@
                 <dd>
                     <span>{{exercise.minutes}}</span>
                 </dd>
+                <dt><span jhiTranslate="fitnessTracker2App.exercise.activity">Activity</span></dt>
+                <dd>
+                    <div *ngIf="exercise.activityId">
+                        <a [routerLink]="['/activity', exercise.activityId, 'view']">{{exercise.activityId}}</a>
+                    </div>
+                </dd>
             </dl>
 
             <button type="submit"
