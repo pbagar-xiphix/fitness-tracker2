@@ -11,7 +11,7 @@ entity Goal {
 }
 
 relationship OneToMany {
-	Exercise{activity} to Activity{exercise}
+	Activity{exercise} to Exercise{activity}
 }
 
 // Set pagination options
